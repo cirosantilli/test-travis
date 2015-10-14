@@ -10,11 +10,13 @@ after_success:
   - touch a
   - git add .
   - git commit -m init
-  - git push -f https://cirosantilli:$GITHUB_API_KEY@github.com/cirosantilli/test-travis-push gh-pages
+  - git push -f https://cirosantilli:$GITHUB_API_KEY_ENCRYPTED@github.com/cirosantilli/test-travis-push gh-pages
 deploy:
   provider: releases
-  api_key: "$GITHUB_API_KEY"
+  api_key: "$GITHUB_API_KEY_ENCRYPTED"
   file: a
   skip_cleanup: true
   on:
     tags: true
+env:
+  - secure: "evSswc9QV8NPI5wzv2Uv+hvMKdqXdF/ZIDbZMyGGkocEvQtPqa5R7uQtAXFibzqBJ5E7p24jcTuHzXI87sPpvcDBao4s5dq+ErkOOh4MWJ7DNneF+GStSWxXMHqBik8AgQy3lw9P1lzgb+vv5BXthfedOIso9H464rNtPmMUYvmsxImN76YugRW29raibXL1fji6PVD5Ia+AVyOhcr1a2Qal44jtATgqVMlgOlXawaE720qnyd5Gh2zdR7xfEE6nbXL8hriJpoH4MyF0YYqtmFs7x9vuzbctGdjuFx6t0Nml25N+xNDIJ8NA+TgimtPwKgma6h+yYkvB4Px+oJ30HlqL3JGS8MsNk26MdaEizp7pwf+LzrwqzUrAaBrHEsPTrXPkgYpnshTVsotmZm0OURdoBfZU4nex0n+ubT5Y6N3dTzEYvEn3Qy6WGszaCR4zlUi5f5CMndQfxoxALvtzf+dckZcMbhh6T1fCmYyqgo2xCVnJ7igSzuiR1rgy5DgW/T+E6M4veezDKHTkkcZFSeK/xr/htKMmJ+Hw/k0HjFTtY4m2/5e2eb4odNn5zWhkP/kbFJ0N+rj5bk3HnUPUohg71yFmzW4L7knFlyVJo9bPQAbExc30fcDF+Im+WUlWptWNrCUJviG3bi8I7VqFmyaQv1NqBxmw4WL2xLDHXWo="
