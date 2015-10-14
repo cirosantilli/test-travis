@@ -10,7 +10,7 @@ after_success:
   - touch a
   - git add .
   - git commit -m init
-  - git push -f https://cirosantilli:$GITHUB_API_KEY@github.com/cirosantilli/test-travis-push
+  - git push -f https://cirosantilli:$GITHUB_API_KEY@github.com/cirosantilli/test-travis-push gh-pages
 deploy:
   provider: releases
   api_key: "$GITHUB_API_KEY"
