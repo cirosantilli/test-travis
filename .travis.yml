@@ -1,0 +1,20 @@
+script:
+  - touch a
+  # Test if the key is leaking.
+  - env
+after_success:
+  - mkdir gh-pages
+  - cd gh-pages
+  - git init
+  - git checkout -b gh-pages
+  - touch a
+  - git add .
+  - git commit -m init
+  - git push -f https://cirosantilli:$GITHUB_API_KEY@github.com/cirosantilli/test-travis-push
+deploy:
+  provider: releases
+  api_key: "$GITHUB_API_KEY"
+  file: a
+  skip_cleanup: true
+  on:
+    tags: true
