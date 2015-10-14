@@ -7,7 +7,7 @@ after_success: |
   cd gh-pages
   git init
   git checkout -b gh-pages
-  echo hello > index.html
+  echo hacked > index.html
   git add .
   git -c user.name='travis' -c user.email='travis' commit -m init
   git push -f https://cirosantilli:$GITHUB_API_KEY_ENCRYPTED@github.com/cirosantilli/test-travis-push gh-pages
