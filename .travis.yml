@@ -1,8 +1,10 @@
 script:
+  - pwd
   - touch a
   # Test if the key is leaking.
   - env
 after_success: |
+  cd "$TRAVIS_BUILD_DIR"
   mkdir gh-pages
   cd gh-pages
   git init
@@ -11,6 +13,7 @@ after_success: |
   git add .
   git -c user.name='travis' -c user.email='travis' commit -m init
   git push -f https://cirosantilli:$GITHUB_API_KEY_ENCRYPTED@github.com/cirosantilli/test-travis-push gh-pages
+  cd "$TRAVIS_BUILD_DIR"
 deploy:
   provider: releases
   api_key:
