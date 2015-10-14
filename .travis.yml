@@ -2,15 +2,15 @@ script:
   - touch a
   # Test if the key is leaking.
   - env
-after_success:
-  - mkdir gh-pages
-  - cd gh-pages
-  - git init
-  - git checkout -b gh-pages
-  - echo hello > index.html
-  - git add .
-  - git commit -m init
-  - GIT_AUTHOR_NAME="travis" GIT_AUTHOR_EMAIL="travis" git push -f https://cirosantilli:$GITHUB_API_KEY_ENCRYPTED@github.com/cirosantilli/test-travis-push gh-pages
+after_success: |
+  mkdir gh-pages
+  cd gh-pages
+  git init
+  git checkout -b gh-pages
+  echo hello > index.html
+  git add .
+  git commit -m init
+  GIT_AUTHOR_NAME="travis" GIT_AUTHOR_EMAIL="travis" git push -f https://cirosantilli:$GITHUB_API_KEY_ENCRYPTED@github.com/cirosantilli/test-travis-push gh-pages
 deploy:
   provider: releases
   api_key:
